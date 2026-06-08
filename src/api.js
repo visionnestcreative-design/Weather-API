@@ -1,7 +1,7 @@
 import { CONFIG } from './config.js';
 
 export const fetchWeather = async (query) => {
-    if (!CONFIG.API_KEY || CONFIG.API_KEY === 'YOUR_WEATHERAPI_KEY_HERE') {
+    if (!CONFIG.API_KEY || CONFIG.API_KEY === 'b949dbfb8b804b8aa6a50720260806') {
         throw new Error("Missing API Key. Please add your WeatherAPI key in config.js");
     }
 
