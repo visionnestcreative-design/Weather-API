@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/themes.css">
+</head>
+<body class="theme-default">
+    <div id="app-container">
+        <!-- Error Banner -->
+        <div id="error-banner" class="hidden" role="alert" aria-live="assertive"></div>
+
+        <header>
+            <div class="search-container">
+                <form id="search-form">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search City, ZIP or Country..." autocomplete="off" aria-label="Search location">
+                    <button type="button" id="geo-btn" aria-label="Use Current Location" title="Current Location">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </button>
+                </form>
+                <div id="recent-searches" class="tags-container"></div>
+            </div>
+            <div class="controls">
+                <div class="unit-toggle" role="switch" aria-checked="true" tabindex="0" id="unit-toggle">
+                    <span class="toggle-label metric active">°C</span>
+                    <div class="toggle-track"><div class="toggle-thumb"></div></div>
+                    <span class="toggle-label imperial">°F</span>
+                </div>
+            </div>
+        </header>
+
+        <main id="main-content" class="skeleton-active">
+            <!-- Loader -->
+            <div id="loader" class="loader-overlay hidden">
+                <div class="spinner"></div>
+            </div>
+
+            <section class="top-section">
+                <!-- Current Weather -->
+                <article class="card current-weather" id="current-weather">
+                    <div class="location-header">
+                        <h1 id="location-name">--</h1>
+                        <p id="location-date">--</p>
+                    </div>
+                    <div class="weather-main">
+                        <div class="temp-block">
+                            <h2 id="current-temp">--°</h2>
+                            <p class="feels-like">Feels like <span id="feels-like">--°</span></p>
+                        </div>
+                        <div class="condition-block">
+                            <img id="current-icon" src="" alt="Weather Condition" class="weather-icon hidden">
+                            <p id="current-condition">--</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- AQI Card -->
+                <article class="card aqi-card" id="aqi-card">
+                    <h3>Air Quality Index</h3>
+                    <div class="aqi-display">
+                        <div class="aqi-circle" id="aqi-circle">--</div>
+                        <div class="aqi-details">
+                            <p id="aqi-status">--</p>
+                            <p class="pollutant">PM2.5: <span id="aqi-pm25">--</span></p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="middle-section">
+                <!-- Secondary Metrics -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-title">Humidity</span>
+                        <span class="metric-value" id="humidity-val">--%</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Wind</span>
+                        <span class="metric-value" id="wind-val">--</span>
+                        <span class="metric-sub" id="wind-dir">--</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Pressure</span>
+                        <span class="metric-value" id="pressure-val">--</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">UV Index</span>
+                        <span class="metric-value" id="uv-val">--</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-title">Visibility</span>
+                        <span class="metric-value" id="vis-val">--</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bottom-section">
+                <!-- Hourly Forecast -->
+                <article class="card hourly-forecast">
+                    <h3>Today's Forecast</h3>
+                    <div class="hourly-slider" id="hourly-container">
+                        <!-- JS injects hourly items here -->
+                    </div>
+                </article>
+
+                <!-- Daily Forecast -->
+                <article class="card daily-forecast">
+                    <h3>3-Day Forecast</h3>
+                    <div class="daily-grid" id="daily-container">
+                        <!-- JS injects daily items here -->
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>

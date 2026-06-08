@@ -1,0 +1,32 @@
+/* Dynamic Backgrounds based on weather */
+body.theme-default {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+body.theme-clear-day {
+    background: linear-gradient(135deg, #2980B9 0%, #6DD5FA 100%, #FFFFFF 100%);
+}
+
+body.theme-clear-night {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+}
+
+body.theme-cloudy {
+    background: linear-gradient(135deg, #536976 0%, #292E49 100%);
+}
+
+body.theme-rain {
+    background: linear-gradient(135deg, #373B44 0%, #4286f4 100%);
+}
+
+body.theme-snow {
+    background: linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%);
+}
+
+body.theme-fog {
+    background: linear-gradient(135deg, #757F9A 0%, #D7DDE8 100%);
+}
+
+body.theme-thunder {
+    background: linear-gradient(135deg, #141E30 0%, #243B55 100%);
+}
